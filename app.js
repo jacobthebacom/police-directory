@@ -261,7 +261,7 @@ function entryHTML(o, q) {
     .map(s => `<li><a href="${s.url}" target="_blank" rel="noopener">${escapeHTML(s.label)}</a><span class="src-type">${escapeHTML(s.type || "")}</span></li>`)
     .join("");
 
-  const typeClass = (o.separation_type || "").toLowerCase();
+  const typeClass = (o.separation_type || "").toLowerCase().replace(/\s+/g, "-");
   const dept = escapeHTML(o.former_department || "—");
   const current = o.current_department ? ` → ${escapeHTML(o.current_department)}` : "";
   const county = o.county ? `${escapeHTML(o.county)} County, ` : "";
