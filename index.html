@@ -13,6 +13,20 @@
       <span class="brand-mark">OSD</span>
       <span class="brand-name">Officer Separation Directory</span>
     </div>
+
+    <div class="searchbar">
+      <svg class="search-icon" viewBox="0 0 24 24" width="16" height="16" fill="none"
+           stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input id="search-input" type="text"
+             placeholder="Search name, department, county, state…"
+             autocomplete="off" spellcheck="false" />
+      <kbd id="search-kbd" class="search-kbd">⌘K</kbd>
+      <button id="search-clear" class="search-clear" hidden aria-label="Clear">×</button>
+    </div>
+
     <nav class="topnav">
       <button id="back-btn" class="back-btn" hidden>← United States</button>
       <a href="#policy">Policy</a>
