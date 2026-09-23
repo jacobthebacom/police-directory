@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Officer Separation Directory</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Officer Separation Directory</h1>
+    <p class="disclaimer">
+      This site aggregates publicly available official records. No claim is made
+      that any individual committed a crime. All entries link to primary sources.
+    </p>
+  </header>
+
+  <main>
+    <div id="map"></div>
+    <aside id="panel">
+      <div id="breadcrumb">United States</div>
+      <div id="results">
+        <p class="hint">Click a state to view entries.</p>
+      </div>
+    </aside>
+  </main>
+
+  <footer id="policy">
+    <h2>Policy</h2>
+    <ul>
+      <li>Every entry links to at least one primary source.</li>
+      <li>Entries are labeled confirmed / reported / disputed.</li>
+      <li>Right of reply: <a href="mailto:you@example.com">you@example.com</a></li>
+    </ul>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
