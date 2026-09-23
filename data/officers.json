@@ -1,0 +1,18 @@
+[
+  {
+    "id": "sample-001",
+    "name": "John Example",
+    "state_name": "Washington",
+    "county": "King",
+    "former_department": "Example PD",
+    "current_department": "Unknown",
+    "separation_date": "2022-03-15",
+    "separation_type": "terminated",
+    "status": "confirmed",
+    "sources": [
+      { "type": "post", "url": "https://example.gov/record", "label": "WA POST record" }
+    ],
+    "officer_response": null,
+    "last_updated": "2024-01-10"
+  }
+]
