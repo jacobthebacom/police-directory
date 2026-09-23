@@ -6,6 +6,7 @@ html, body {
   background: #0f1115;
   color: #e6e6e6;
   overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ---- top bar ---- */
@@ -17,18 +18,26 @@ html, body {
   align-items: center;
   justify-content: space-between;
   padding: 0 1.25rem;
+  padding-top: env(safe-area-inset-top);
   background: #11151b;
   border-bottom: 1px solid #222831;
   z-index: 1000;
 }
-.brand { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.brand:hover .brand-name { color: #fff; }
 .brand-mark {
   background: #2b4d8f; color: #fff;
   font-weight: 700; font-size: .8rem;
   padding: .25rem .5rem; border-radius: 4px;
   letter-spacing: .04em;
 }
-.brand-name { font-size: .95rem; font-weight: 600; }
+.brand-name { font-size: .95rem; font-weight: 600; transition: color .15s; }
 
 .topnav {
   display: flex;
@@ -41,7 +50,45 @@ html, body {
 }
 .topnav a:hover { color: #e6e6e6; }
 
-/* back button (shown only when zoomed into a state) */
+/* hamburger — hidden on desktop */
+.menu-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #cfd6e0;
+  cursor: pointer;
+  padding: 8px;
+  margin-left: .25rem;
+  border-radius: 6px;
+}
+.menu-btn:hover { background: #1a1f28; }
+
+/* mobile dropdown */
+.mobile-menu {
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  margin-top: 6px;
+  min-width: 180px;
+  background: #141922;
+  border: 1px solid #222831;
+  border-radius: 10px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5);
+  padding: .35rem;
+  z-index: 1100;
+}
+.mobile-menu a {
+  display: block;
+  padding: .65rem .8rem;
+  color: #cfd6e0;
+  text-decoration: none;
+  font-size: .85rem;
+  border-radius: 6px;
+}
+.mobile-menu a:hover,
+.mobile-menu a:active { background: #1a2433; color: #fff; }
+
+/* back button */
 .back-btn {
   background: #1a2433;
   border: 1px solid #2a3340;
@@ -63,7 +110,6 @@ html, body {
   display: flex;
   align-items: center;
 }
-
 .search-icon {
   position: absolute;
   left: 14px;
@@ -111,7 +157,6 @@ html, body {
 }
 .search-clear:hover { background: #3a4555; color: #fff; }
 
-/* highlight matched substring in entries */
 mark {
   background: #3b76bd55;
   color: inherit;
@@ -119,7 +164,6 @@ mark {
   padding: 0 2px;
 }
 
-/* results count line at top of drawer */
 .results-count {
   font-size: .72rem;
   color: #6d7684;
@@ -132,6 +176,7 @@ mark {
 .stage {
   position: fixed;
   top: 56px; left: 0; right: 0; bottom: 32px;
+  top: calc(56px + env(safe-area-inset-top));
 }
 #map { width: 100%; height: 100%; background: #0f1115; }
 
@@ -235,6 +280,7 @@ mark {
   height: 32px;
   display: flex; align-items: center;
   padding: 0 1.25rem;
+  padding-bottom: env(safe-area-inset-bottom);
   background: #11151b;
   border-top: 1px solid #222831;
   font-size: .72rem; color: #6d7684;
@@ -250,7 +296,6 @@ mark {
 }
 .leaflet-control-attribution a { color: #6ea8fe !important; }
 
-/* custom hover tooltip */
 .state-tooltip {
   background: #f4f4f4;
   color: #111;
@@ -267,4 +312,136 @@ mark {
   font-size: .72rem;
   color: #444;
   margin-top: .15rem;
+}
+
+/* ==================================================================
+   MOBILE  (<= 720px)
+   ================================================================== */
+@media (max-width: 720px) {
+
+  .topbar {
+    padding: 0 .75rem;
+    padding-top: env(safe-area-inset-top);
+    gap: .5rem;
+  }
+  .brand-name { display: none; }
+  .searchbar {
+    margin: 0 .5rem;
+    max-width: none;
+  }
+  #search-input {
+    height: 36px;
+    font-size: .85rem;
+    padding: 0 38px 0 36px;
+  }
+  .search-icon { left: 12px; }
+  .search-clear { right: 8px; width: 26px; height: 26px; font-size: 1rem; }
+
+  /* hide desktop nav links, show hamburger */
+  .nav-link-desktop { display: none; }
+  .menu-btn { display: flex; }
+
+  .back-btn {
+    margin-right: .25rem;
+    padding: .35rem .55rem;
+    font-size: .75rem;
+  }
+
+  .statcard {
+    top: auto;
+    bottom: calc(20px + env(safe-area-inset-bottom));
+    left: 12px;
+    padding: .6rem .8rem;
+    min-width: 0;
+  }
+  .stat-value { font-size: 1.4rem; }
+  .stat-label, .stat-sub { font-size: .65rem; }
+
+  .legend {
+    top: 12px;
+    right: 12px;
+    padding: .5rem .65rem;
+    font-size: .72rem;
+  }
+  .legend-title { font-size: .65rem; margin-bottom: .35rem; }
+  .swatch { width: 12px; height: 12px; }
+
+  /* drawer as bottom sheet */
+  .drawer {
+    top: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 65vh;
+    max-height: 65vh;
+    border-left: none;
+    border-top: 1px solid #222831;
+    border-radius: 14px 14px 0 0;
+    padding: .85rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform .28s ease;
+    box-shadow: 0 -8px 30px rgba(0,0,0,.5);
+  }
+  .drawer.open { transform: translateY(0); }
+
+  .drawer::before {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    border-radius: 2px;
+    background: #2a3340;
+    margin: 0 auto .75rem;
+  }
+
+  .drawer-close {
+    top: auto;
+    bottom: calc(65vh + 12px + env(safe-area-inset-bottom));
+    right: 12px;
+    width: 34px;
+    height: 34px;
+    font-size: 1.2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+  .drawer-close.show { display: flex; }
+
+  #breadcrumb { font-size: .72rem; padding-right: 44px; }
+
+  .entry { padding: .7rem .8rem; }
+  .entry h3 { font-size: .95rem; }
+  .entry .meta { font-size: .75rem; }
+
+  .pagefooter { display: none; }
+  .stage { bottom: 0; top: calc(56px + env(safe-area-inset-top)); }
+
+  .leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 1.15rem !important;
+  }
+  .leaflet-control-attribution { font-size: .6rem !important; }
+
+  .state-tooltip { font-size: .78rem; padding: .35rem .55rem; }
+}
+
+/* extra small phones */
+@media (max-width: 420px) {
+  .statcard { display: none; }
+  .legend {
+    top: auto;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    right: 12px;
+  }
+  .drawer { height: 75vh; max-height: 75vh; }
+  .drawer-close { bottom: calc(75vh + 12px + env(safe-area-inset-bottom)); }
+}
+
+/* when installed as a PWA (standalone), pad the top for the status bar */
+@media (display-mode: standalone) {
+  .topbar { padding-top: max(env(safe-area-inset-top), 12px); }
+  .stage { top: calc(56px + max(env(safe-area-inset-top), 12px)); }
 }
