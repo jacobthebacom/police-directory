@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: #0f1115;
+  color: #e6e6e6;
+}
+header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid #262a33;
+}
+header h1 { margin: 0 0 .4rem; font-size: 1.25rem; }
+.disclaimer { margin: 0; font-size: .8rem; color: #9aa3b2; max-width: 60ch; }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  height: calc(100vh - 160px);
+}
+#map { height: 100%; }
+
+#panel {
+  border-left: 1px solid #262a33;
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+}
+#breadcrumb { font-size: .85rem; color: #9aa3b2; margin-bottom: .75rem; }
+.entry {
+  border: 1px solid #262a33;
+  border-radius: 6px;
+  padding: .75rem;
+  margin-bottom: .75rem;
+}
+.entry h3 { margin: 0 0 .35rem; font-size: .95rem; }
+.entry .meta { font-size: .78rem; color: #9aa3b2; margin-bottom: .4rem; }
+.badge {
+  display: inline-block; font-size: .7rem;
+  padding: .1rem .4rem; border-radius: 999px; margin-right: .3rem;
+}
+.badge.confirmed { background: #1f6f43; }
+.badge.reported  { background: #7a5a12; }
+.badge.disputed  { background: #7a1f1f; }
+.entry a { color: #6ea8fe; font-size: .78rem; }
+.hint { color: #9aa3b2; font-size: .85rem; }
+
+footer {
+  padding: 1rem 1.5rem;
+  border-top: 1px solid #262a33;
+  font-size: .8rem; color: #9aa3b2;
+}
+footer h2 { font-size: .9rem; margin: 0 0 .4rem; }
