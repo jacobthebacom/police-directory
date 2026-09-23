@@ -2,14 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#11151b" />
+  <meta name="description" content="A public directory of police officers who have separated from their departments, organized by state and county." />
   <title>Officer Separation Directory</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjI4IiBmaWxsPSIjMmI0ZDhmIi8+PHRleHQgeD0iOTYiIHk9IjEyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9Ijc2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5PU0Q8L3RleHQ+PC9zdmc+" />
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjI4IiBmaWxsPSIjMmI0ZDhmIi8+PHRleHQgeD0iOTYiIHk9IjEyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9Ijc2IiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5PU0Q8L3RleHQ+PC9zdmc+" />
+
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">
+    <div class="brand" id="brand-home" role="button" tabindex="0">
       <span class="brand-mark">OSD</span>
       <span class="brand-name">Officer Separation Directory</span>
     </div>
@@ -28,9 +35,24 @@
 
     <nav class="topnav">
       <button id="back-btn" class="back-btn" hidden>← United States</button>
-      <a href="#policy">Policy</a>
-      <a href="mailto:you@example.com">Right of reply</a>
+      <a href="#policy" class="nav-link-desktop">Policy</a>
+      <a href="mailto:you@example.com" class="nav-link-desktop">Right of reply</a>
+
+      <button id="menu-btn" class="menu-btn" aria-label="Menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"
+             stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <line x1="4" y1="7" x2="20" y2="7"></line>
+          <line x1="4" y1="12" x2="20" y2="12"></line>
+          <line x1="4" y1="17" x2="20" y2="17"></line>
+        </svg>
+      </button>
     </nav>
+
+    <!-- Mobile dropdown menu -->
+    <div id="mobile-menu" class="mobile-menu" hidden>
+      <a href="#policy" data-menu-close>Policy</a>
+      <a href="mailto:you@example.com" data-menu-close>Right of reply</a>
+    </div>
   </header>
 
   <div class="stage">
