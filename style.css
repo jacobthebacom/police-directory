@@ -8,6 +8,7 @@ html, body {
   overflow: hidden;
 }
 
+/* ---- top bar ---- */
 .topbar {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -28,18 +29,37 @@ html, body {
   letter-spacing: .04em;
 }
 .brand-name { font-size: .95rem; font-weight: 600; }
+.topnav {
+  display: flex;
+  align-items: center;
+}
 .topnav a {
   color: #9aa3b2; text-decoration: none;
   font-size: .82rem; margin-left: 1rem;
 }
 .topnav a:hover { color: #e6e6e6; }
 
+/* back button (shown only when zoomed into a state) */
+.back-btn {
+  background: #1a2433;
+  border: 1px solid #2a3340;
+  color: #cfd6e0;
+  padding: .35rem .75rem;
+  border-radius: 6px;
+  font-size: .8rem;
+  cursor: pointer;
+  margin-right: 1rem;
+}
+.back-btn:hover { background: #24354b; color: #fff; }
+
+/* ---- map stage ---- */
 .stage {
   position: fixed;
   top: 56px; left: 0; right: 0; bottom: 32px;
 }
 #map { width: 100%; height: 100%; background: #0f1115; }
 
+/* ---- legend ---- */
 .legend {
   position: absolute;
   top: 20px; right: 20px;
@@ -60,6 +80,7 @@ html, body {
 .s2 { background: #3b76bd; }
 .s3 { background: #6ea8fe; }
 
+/* ---- stat card ---- */
 .statcard {
   position: absolute;
   top: 20px; left: 20px;
@@ -75,6 +96,7 @@ html, body {
 .stat-value { font-size: 1.9rem; font-weight: 700; color: #e6e6e6; line-height: 1.1; }
 .stat-sub { font-size: .72rem; color: #9aa3b2; margin-top: .2rem; }
 
+/* ---- drawer ---- */
 .drawer {
   position: absolute;
   top: 0; right: 0; bottom: 0;
@@ -130,6 +152,7 @@ html, body {
 .entry a:hover { text-decoration: underline; }
 .hint { color: #9aa3b2; font-size: .82rem; }
 
+/* ---- footer ---- */
 .pagefooter {
   position: fixed;
   bottom: 0; left: 0; right: 0;
@@ -142,6 +165,7 @@ html, body {
   z-index: 1000;
 }
 
+/* ---- leaflet tweaks ---- */
 .leaflet-container { background: #0f1115; }
 .leaflet-control-attribution {
   background: rgba(17,21,27,.7) !important;
