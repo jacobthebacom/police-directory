@@ -34,5 +34,41 @@
     ],
     "officer_response": null,
     "last_updated": "2026-09-23"
+  },
+  {
+    "id": "morales-israel-002",
+    "name": "Israel Morales",
+    "state_name": "California",
+    "county": "Stanislaus",
+    "county_fips": "06099",
+    "former_department": "Stanislaus County Sheriff's Office",
+    "current_department": null,
+    "separation_date": null,
+    "separation_type": "arrested",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "government",
+        "url": "https://www.stanislaus-da.org/",
+        "label": "Stanislaus County District Attorney's Office — Press Release, May 28, 2025"
+      },
+      {
+        "type": "news",
+        "url": "https://www.modbee.com/news/local/crime/article309599795.html",
+        "label": "Modesto Bee: Bail reduction denied for Stanislaus deputy charged with kidnap, sexual assault"
+      },
+      {
+        "type": "news",
+        "url": "https://www.fresnobee.com/news/california/article307303746.html",
+        "label": "Fresno Bee: California deputy arrested on suspicion of kidnapping, sexual assault"
+      },
+      {
+        "type": "news",
+        "url": "https://www.cbsnews.com/sacramento/news/stanislaus-co-sheriff-deputy-arrest-sex-assault-kidnapping-allegations/",
+        "label": "CBS News: Stanislaus County deputy arraigned on sexual misconduct, kidnapping charges"
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-23"
   }
 ]
