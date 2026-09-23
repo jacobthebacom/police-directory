@@ -50,7 +50,7 @@ html, body {
 }
 .topnav a:hover { color: #e6e6e6; }
 
-/* hamburger — hidden on desktop */
+/* hamburger — hidden by default, shown only on mobile */
 .menu-btn {
   display: none;
   background: transparent;
@@ -337,7 +337,7 @@ mark {
   .search-icon { left: 12px; }
   .search-clear { right: 8px; width: 26px; height: 26px; font-size: 1rem; }
 
-  /* hide desktop nav links, show hamburger */
+  /* hide desktop nav links, SHOW hamburger */
   .nav-link-desktop { display: none; }
   .menu-btn { display: flex; }
 
@@ -440,7 +440,7 @@ mark {
   .drawer-close { bottom: calc(75vh + 12px + env(safe-area-inset-bottom)); }
 }
 
-/* when installed as a PWA (standalone), pad the top for the status bar */
+/* when installed as a PWA (standalone) */
 @media (display-mode: standalone) {
   .topbar { padding-top: max(env(safe-area-inset-top), 12px); }
   .stage { top: calc(56px + max(env(safe-area-inset-top), 12px)); }
