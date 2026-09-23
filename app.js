@@ -257,20 +257,37 @@ function escapeHTML(s) {
 }
 
 function entryHTML(o, q) {
-  const sources = o.sources
-    .map(s => `<a href="${s.url}" target="_blank" rel="noopener">${escapeHTML(s.label)}</a>`)
-    .join(" · ");
+  const sourceLinks = o.sources
+    .map(s => `<li><a href="${s.url}" target="_blank" rel="noopener">${escapeHTML(s.label)}</a><span class="src-type">${escapeHTML(s.type || "")}</span></li>`)
+    .join("");
+
+  const typeClass = (o.separation_type || "").toLowerCase();
+  const dept = escapeHTML(o.former_department || "—");
+  const current = o.current_department ? ` → ${escapeHTML(o.current_department)}` : "";
+  const county = o.county ? `${escapeHTML(o.county)} County, ` : "";
+  const stateName = escapeHTML(o.state_name || "");
+
   return `
     <div class="entry">
       <h3>${highlight(escapeHTML(o.name), q)}</h3>
+
       <div class="meta">
-        ${highlight(escapeHTML(o.former_department), q)} → ${escapeHTML(o.current_department || "—")}<br/>
-        ${highlight(escapeHTML(o.county || ""), q)}${o.county ? " County, " : ""}${highlight(escapeHTML(o.state_name || ""), q)}<br/>
-        ${o.separation_date} · ${highlight(escapeHTML(o.separation_type), q)}
+        <div class="meta-row"><span class="meta-label">Dept</span><span class="meta-val">${highlight(dept, q)}${current}</span></div>
+        <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">${highlight(county, q)}${highlight(stateName, q)}</span></div>
+        <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">${o.separation_date}</span></div>
       </div>
-      <span class="badge ${o.status}">${o.status}</span>
-      <div style="margin-top:.5rem">${sources}</div>
-      ${o.officer_response ? `<p style="font-size:.76rem;color:#9aa3b2;margin:.5rem 0 0">Response: ${escapeHTML(o.officer_response)}</p>` : ""}
+
+      <div class="pills">
+        <span class="badge ${o.status}">${o.status}</span>
+        <span class="badge type ${typeClass}">${escapeHTML(o.separation_type)}</span>
+      </div>
+
+      <div class="sources-block">
+        <div class="sources-head">Sources</div>
+        <ul class="sources-list">${sourceLinks}</ul>
+      </div>
+
+      ${o.officer_response ? `<p class="officer-response"><strong>Response:</strong> ${escapeHTML(o.officer_response)}</p>` : ""}
     </div>
   `;
 }
