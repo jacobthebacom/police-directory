@@ -123,7 +123,7 @@ async function selectState(stateName) {
   }
 
   const stateFips = STATE_FIPS[stateName];
-  if (!stateFips) { renderResults(); openDrawer(); return; }
+  if (!stateFips) return;
 
   const countiesForState = {
     type: "FeatureCollection",
@@ -162,8 +162,6 @@ async function selectState(stateName) {
   }).addTo(map);
 
   map.fitBounds(countiesLayer.getBounds(), { padding: [40, 40] });
-  renderResults();
-  openDrawer();
 }
 
 function selectCounty(fips, countyName) {
@@ -172,6 +170,7 @@ function selectCounty(fips, countyName) {
   document.getElementById("breadcrumb").textContent =
     `United States / ${state.stateName} / ${countyName}`;
   renderResults();
+  openDrawer();
 }
 
 function backToUS() {
@@ -274,7 +273,7 @@ function entryHTML(o, q) {
       <div class="meta">
         <div class="meta-row"><span class="meta-label">Dept</span><span class="meta-val">${highlight(dept, q)}${current}</span></div>
         <div class="meta-row"><span class="meta-label">Location</span><span class="meta-val">${highlight(county, q)}${highlight(stateName, q)}</span></div>
-        <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">${o.separation_date}</span></div>
+        <div class="meta-row"><span class="meta-label">Date</span><span class="meta-val">${o.separation_date || "—"}</span></div>
       </div>
 
       <div class="pills">
@@ -354,7 +353,6 @@ function initMobileMenu() {
     menuBtn.setAttribute("aria-expanded", String(!isOpen));
   });
 
-  // close when clicking a link
   menu.querySelectorAll("[data-menu-close]").forEach(a => {
     a.addEventListener("click", () => {
       menu.hidden = true;
@@ -362,7 +360,6 @@ function initMobileMenu() {
     });
   });
 
-  // close when clicking anywhere else
   document.addEventListener("click", e => {
     if (menu.hidden) return;
     if (!menu.contains(e.target) && e.target !== menuBtn) {
@@ -371,7 +368,6 @@ function initMobileMenu() {
     }
   });
 
-  // close on Escape
   document.addEventListener("keydown", e => {
     if (e.key === "Escape" && !menu.hidden) {
       menu.hidden = true;
