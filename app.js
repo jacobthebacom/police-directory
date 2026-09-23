@@ -288,4 +288,104 @@ function initSearch() {
   }
 
   input.addEventListener("input", () => {
-   
+    state.query = input.value;
+    clear.hidden = !state.query;
+    if (state.query) openDrawer();
+    renderResults();
+  });
+
+  input.addEventListener("keydown", e => {
+    if (e.key === "Escape") {
+      input.value = "";
+      state.query = "";
+      clear.hidden = true;
+      renderResults();
+      input.blur();
+    }
+  });
+
+  clear.addEventListener("click", () => {
+    input.value = "";
+    state.query = "";
+    clear.hidden = true;
+    renderResults();
+    input.focus();
+  });
+
+  document.addEventListener("keydown", e => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      input.focus();
+      input.select();
+    }
+  });
+}
+
+// ------------------------------------------------------------------
+// mobile menu + brand home
+// ------------------------------------------------------------------
+function initMobileMenu() {
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+
+  if (!menuBtn || !menu) return;
+
+  menuBtn.addEventListener("click", e => {
+    e.stopPropagation();
+    const isOpen = !menu.hidden;
+    menu.hidden = isOpen;
+    menuBtn.setAttribute("aria-expanded", String(!isOpen));
+  });
+
+  // close when clicking a link
+  menu.querySelectorAll("[data-menu-close]").forEach(a => {
+    a.addEventListener("click", () => {
+      menu.hidden = true;
+      menuBtn.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // close when clicking anywhere else
+  document.addEventListener("click", e => {
+    if (menu.hidden) return;
+    if (!menu.contains(e.target) && e.target !== menuBtn) {
+      menu.hidden = true;
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+
+  // close on Escape
+  document.addEventListener("keydown", e => {
+    if (e.key === "Escape" && !menu.hidden) {
+      menu.hidden = true;
+      menuBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
+
+function initBrandHome() {
+  const brandEl = document.getElementById("brand-home");
+  if (!brandEl) return;
+  brandEl.addEventListener("click", backToUS);
+  brandEl.addEventListener("keydown", e => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      backToUS();
+    }
+  });
+}
+
+// ------------------------------------------------------------------
+// boot
+// ------------------------------------------------------------------
+document.getElementById("drawer-close").addEventListener("click", closeDrawer);
+document.getElementById("back-btn").addEventListener("click", backToUS);
+
+(async function main() {
+  await loadData();
+  initMap();
+  initSearch();
+  initMobileMenu();
+  initBrandHome();
+  renderResults();
+})();
