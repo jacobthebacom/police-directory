@@ -14,17 +14,22 @@
       {
         "type": "court",
         "url": "https://trellis.law/case/cv-22-004044/prado-maria-vs-stanislaus-county-sheriffs-department",
-        "label": "Prado v. Stanislaus County Sheriff's Dept. — Case No. CV-22-004044 (Stanislaus County Superior Court)"
+        "label": "Prado v. Stanislaus County Sheriff's Dept. — Case No. CV-22-004044"
       },
       {
         "type": "news",
         "url": "https://www.modbee.com/news/politics-government/article315926576.html",
-        "label": "Modesto Bee: Stanislaus County pays $7.1 million for deputy’s fatal high-speed collision"
+        "label": "Modesto Bee: Stanislaus County pays $7.1 million for deputy's fatal high-speed collision"
       },
       {
         "type": "news",
         "url": "https://www.sacbee.com/news/california/article273801475.html",
         "label": "Sacramento Bee: California police officer fired after driving 121 mph before deadly crash"
+      },
+      {
+        "type": "social",
+        "url": "https://www.linkedin.com/in/eric-fulmer-2440142a6/",
+        "label": "LinkedIn profile — Eric Fulmer"
       }
     ],
     "officer_response": null,
