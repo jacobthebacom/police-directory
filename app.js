@@ -1,14 +1,12 @@
 const state = { level: "us", stateName: null };
 let DATA = [];
 let map;
-let geoLayer;
 
 async function loadData() {
   const res = await fetch("data/officers.json");
   DATA = await res.json();
 }
 
-// count entries per state name (e.g. "Washington")
 function countsByState() {
   const counts = {};
   DATA.forEach(o => {
@@ -28,25 +26,35 @@ function initMap() {
   map = L.map("map", { zoomControl: true, attributionControl: true })
     .setView([39.8, -98.6], 4);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/dark_nolabels/{z}/{x}/{y}{r}.png", {
-    attribution: "&copy; OpenStreetMap &copy; CARTO",
-    maxZoom: 12,
+  // ---- BASEMAP (no API key needed) ----
+  // Light, classic OSM:
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "&copy; OpenStreetMap contributors",
+    maxZoom: 19,
     minZoom: 3
   }).addTo(map);
+
+  // If you prefer a DARK basemap instead, comment the tileLayer above
+  // and uncomment the one below (Stadia Alidade Smooth Dark):
+  //
+  // L.tileLayer("https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png", {
+  //   attribution: "&copy; Stadia Maps &copy; OpenMapTiles &copy; OpenStreetMap",
+  //   maxZoom: 20, minZoom: 3
+  // }).addTo(map);
 
   const counts = countsByState();
 
   fetch("https://raw.githubusercontent.com/PublicaMundi/MappingAPI/master/data/geojson/us-states.json")
     .then(r => r.json())
     .then(geo => {
-      geoLayer = L.geoJSON(geo, {
+      L.geoJSON(geo, {
         style: feature => {
           const name = feature.properties.name;
           return {
             color: "#2a3340",
             weight: 1,
             fillColor: colorForCount(counts[name] || 0),
-            fillOpacity: 1
+            fillOpacity: 0.85
           };
         },
         onEachFeature: (feature, layer) => {
@@ -57,7 +65,7 @@ function initMap() {
             `<div class="state-tooltip">${name.toUpperCase()}
                <span class="tt-count">${n} ${n === 1 ? "entry" : "entries"}</span>
              </div>`,
-            { sticky: true, direction: "top", className: "state-tooltip-wrap" }
+            { sticky: true, direction: "top" }
           );
 
           layer.on({
@@ -69,7 +77,6 @@ function initMap() {
       }).addTo(map);
     });
 
-  // global counters
   document.getElementById("total-count").textContent = DATA.length;
   const statesWith = new Set(DATA.map(o => o.state_name));
   document.getElementById("state-count").textContent = statesWith.size;
