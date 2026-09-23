@@ -114,6 +114,32 @@
     "last_updated": "2026-09-23"
   },
   {
+  "id": "foketi-solomon-006",
+  "name": "Solomon Foketi",
+  "state_name": "California",
+  "county": "Stanislaus",
+  "county_fips": "06099",
+  "former_department": "Modesto Police Department",
+  "current_department": null,
+  "separation_date": "2026-06-20",
+  "separation_type": "arrested",
+  "status": "confirmed",
+  "sources": [
+    {
+      "type": "news",
+      "url": "https://www.fresnobee.com/news/california/central-valley/article316207789.html",
+      "label": "Fresno Bee: Modesto police officer arrested in Tuolumne County on suspicion of domestic violence"
+    },
+    {
+      "type": "news",
+      "url": "http://www.cbsnews.com/sacramento/news/modesto-police-officer-arrested-alleged-off-duty-domestic-violence/",
+      "label": "CBS News: Modesto police officer arrested for alleged off-duty domestic violence incident"
+    }
+  ],
+  "officer_response": null,
+  "last_updated": "2026-09-23"
+  },
+  {
     "id": "hankins-curtis-005",
     "name": "Curtis Ray Hankins Sr.",
     "state_name": "California",
