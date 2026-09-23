@@ -43,7 +43,7 @@
     "county_fips": "06099",
     "former_department": "Stanislaus County Sheriff's Office",
     "current_department": null,
-    "separation_date": null,
+    "separation_date": "2025-05-27",
     "separation_type": "arrested",
     "status": "confirmed",
     "sources": [
@@ -79,7 +79,7 @@
     "county_fips": "06099",
     "former_department": "Modesto Police Department",
     "current_department": null,
-    "separation_date": "2021-03-01",
+    "separation_date": "2021-03-18",
     "separation_type": "terminated",
     "status": "confirmed",
     "sources": [
@@ -90,8 +90,39 @@
       },
       {
         "type": "news",
-        "url": "https://www.modbee.com/news/local/crime/article290307619.html",
+        "url": "https://www.modbee.com/news/local/article290307619.html",
         "label": "Modesto Bee: Former Modesto officer suing DA's Office for charging him in 2020 fatal shooting"
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-23"
+  },
+  {
+    "id": "dessert-matthew-004",
+    "name": "Matthew Dessert",
+    "state_name": "California",
+    "county": "Stanislaus",
+    "county_fips": "06099",
+    "former_department": "Stanislaus County Sheriff's Office",
+    "current_department": null,
+    "separation_date": "2023-09-25",
+    "separation_type": "terminated",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "news",
+        "url": "https://www.cbsnews.com/sacramento/news/former-stanislaus-deputy-sentenced-sexual-abuse-minor/",
+        "label": "CBS News: Former Stanislaus sheriff's deputy sentenced for continual sexual abuse of a minor"
+      },
+      {
+        "type": "news",
+        "url": "https://www.turlockjournal.com/news/crime/former-stanislaus-county-deputy-sentenced-to-nine-years-for-child-sexual-abuse/",
+        "label": "Turlock Journal: Former Stanislaus County deputy sentenced to nine years for child sexual abuse"
+      },
+      {
+        "type": "news",
+        "url": "https://fox40.com/news/local-news/stanislaus-county/former-northern-california-deputy-gets-9-years-in-prison-for-sexually-abusing-daughter/",
+        "label": "FOX40: Former Northern California deputy gets 9 years in prison for sexually abusing daughter"
       }
     ],
     "officer_response": null,
