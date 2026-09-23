@@ -302,17 +302,32 @@ mark {
   text-transform: uppercase;
   letter-spacing: .05em;
   font-weight: 600;
+  border: 1px solid transparent;
 }
-.badge.confirmed { background: #1f6f43; color: #d4f5e1; }
-.badge.reported  { background: #7a5a12; color: #f7e8b8; }
-.badge.disputed  { background: #7a1f1f; color: #f7c9c9; }
+
+/* status pills */
+.badge.confirmed { background: #1f6f43; color: #d4f5e1; border-color: #2a8a55; }
+.badge.reported  { background: #7a5a12; color: #f7e8b8; border-color: #9a7318; }
+.badge.disputed  { background: #7a1f1f; color: #f7c9c9; border-color: #9a2828; }
 
 /* separation-type pills */
-.badge.type { background: #2a3340; color: #cfd6e0; }
-.badge.type.terminated { background: #7a1f1f; color: #f7c9c9; }
-.badge.type.resigned   { background: #7a5a12; color: #f7e8b8; }
-.badge.type.retired    { background: #2a3340; color: #cfd6e0; }
-.badge.type.rehired    { background: #4a2f7a; color: #ddd0f7; }
+.badge.type { background: #2a3340; color: #cfd6e0; border-color: #38424f; }
+
+/* red — most severe */
+.badge.type.terminated { background: #7a1f1f; color: #f7c9c9; border-color: #9a2828; }
+.badge.type.arrested   { background: #8a1818; color: #ffcece; border-color: #a82323; }
+
+/* amber — mid severity */
+.badge.type.suspended  { background: #7a5a12; color: #f7e8b8; border-color: #9a7318; }
+
+/* blue — under review, not yet a finding */
+.badge.type.administrative-leave { background: #1c3a5e; color: #cfe3ff; border-color: #264e7c; }
+.badge.type.modified-duty        { background: #1c3a5e; color: #cfe3ff; border-color: #264e7c; }
+
+/* neutral */
+.badge.type.resigned { background: #4a3a1c; color: #e8d7b0; border-color: #5e4a26; }
+.badge.type.retired  { background: #2a3340; color: #cfd6e0; border-color: #38424f; }
+.badge.type.rehired  { background: #4a2f7a; color: #ddd0f7; border-color: #5c3a97; }
 
 /* sources */
 .sources-block {
