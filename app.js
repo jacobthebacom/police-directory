@@ -1,8 +1,8 @@
 const state = {
-  level: "us",          // "us" | "state" | "county"
+  level: "us",
   stateName: null,
   countyFips: null,
-  query: ""             // NEW
+  query: ""
 };
 
 let DATA = [];
@@ -226,7 +226,6 @@ function renderResults() {
   const results = document.getElementById("results");
   const q = state.query.toLowerCase().trim();
 
-  // If searching, ignore map scoping — search globally
   let filtered;
   if (q) {
     filtered = DATA.filter(o => matchesQuery(o, q));
@@ -238,7 +237,6 @@ function renderResults() {
     filtered = DATA;
   }
 
-  // Counts line
   const countLine = q
     ? `<div class="results-count">${filtered.length} result${filtered.length === 1 ? "" : "s"} for "${escapeHTML(state.query)}"</div>`
     : "";
@@ -283,16 +281,16 @@ function entryHTML(o, q) {
 function initSearch() {
   const input = document.getElementById("search-input");
   const clear = document.getElementById("search-clear");
-  const kbd   = document.getElementById("search-kbd");
+
+  if (!input || !clear) {
+    console.warn("Search elements not found in DOM");
+    return;
+  }
 
   input.addEventListener("input", () => {
     state.query = input.value;
     clear.hidden = !state.query;
-    kbd.classList.toggle("hidden", !!state.query);
-
-    // If user typed something, always show the drawer
     if (state.query) openDrawer();
-
     renderResults();
   });
 
@@ -301,7 +299,6 @@ function initSearch() {
       input.value = "";
       state.query = "";
       clear.hidden = true;
-      kbd.classList.remove("hidden");
       renderResults();
       input.blur();
     }
@@ -311,12 +308,11 @@ function initSearch() {
     input.value = "";
     state.query = "";
     clear.hidden = true;
-    kbd.classList.remove("hidden");
     renderResults();
     input.focus();
   });
 
-  // ⌘K / Ctrl+K
+  // ⌘K / Ctrl+K shortcut (works even though there's no visible badge)
   document.addEventListener("keydown", e => {
     if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
       e.preventDefault();
@@ -324,10 +320,6 @@ function initSearch() {
       input.select();
     }
   });
-
-  // Show correct modifier key label per OS
-  const isMac = navigator.platform.toLowerCase().includes("mac");
-  kbd.textContent = isMac ? "⌘K" : "Ctrl K";
 }
 
 // ------------------------------------------------------------------
