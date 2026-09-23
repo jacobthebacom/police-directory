@@ -4,6 +4,7 @@
     "name": "John Example",
     "state_name": "Washington",
     "county": "King",
+    "county_fips": "53033",
     "former_department": "Example PD",
     "current_department": "Unknown",
     "separation_date": "2022-03-15",
