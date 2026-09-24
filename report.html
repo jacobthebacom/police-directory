@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#11151b" />
+  <meta name="description" content="Report a police officer to USA Cop Watch." />
+  <title>Report an Officer — USA Cop Watch</title>
+
+  <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxOTIgMTkyIj48cmVjdCB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgcng9IjI4IiBmaWxsPSIjMmI0ZDhmIi8+PHRleHQgeD0iOTYiIHk9IjEyMiIgZm9udC1mYW1pbHk9InN5c3RlbS11aSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjYwIiBmb250LXdlaWdodD0iNzAwIiBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5VU0E8L3RleHQ+PC9zdmc+" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="page-body">
+  <header class="topbar">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">USA</span>
+      <span class="brand-name">USA Cop Watch</span>
+    </a>
+
+    <div class="searchbar searchbar--empty"></div>
+
+    <nav class="topnav">
+      <a href="index.html" class="nav-link-desktop">Map</a>
+      <a href="report.html" class="nav-link-desktop" aria-current="page">Report</a>
+      <a href="about.html" class="nav-link-desktop">About</a>
+    </nav>
+  </header>
+
+  <main class="about-main">
+    <article class="about-article">
+      <h1>Report an Officer</h1>
+
+      <p>
+        Use this form to submit information about a police officer for review by
+        USA Cop Watch. Please provide as much detail as possible and include links
+        to any public records, news articles, or court documents. Every submission
+        is reviewed by a human before anything is published.
+      </p>
+
+      <p class="form-note">
+        <strong>Before you submit:</strong> please read our
+        <a href="about.html#methodology">methodology</a>. Reports that cannot be
+        verified against public records will not be published.
+      </p>
+
+      <!-- Replace YOUR_FORM_ID below with the Formspree endpoint from Step 1 -->
+      <form
+        id="report-form"
+        action="https://formspree.io/f/mljdnkrr"
+        method="POST"
+        class="report-form"
+      >
+        <div class="field">
+          <label for="officer_name">Officer name <span class="req">*</span></label>
+          <input type="text" id="officer_name" name="officer_name" required autocomplete="off" />
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="department">Department / agency <span class="req">*</span></label>
+            <input type="text" id="department" name="department" required autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="location">City or county, state <span class="req">*</span></label>
+            <input type="text" id="location" name="location" placeholder="e.g. Modesto, CA" required autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="incident_date">Date of incident (if known)</label>
+          <input type="date" id="incident_date" name="incident_date" />
+        </div>
+
+        <div class="field">
+          <label for="category">Category <span class="req">*</span></label>
+          <select id="category" name="category" required>
+            <option value="">— Select —</option>
+            <option>Terminated / fired</option>
+            <option>Arrested / criminally charged</option>
+            <option>Suspended</option>
+            <option>Administrative leave</option>
+            <option>Modified duty</option>
+            <option>Resigned under investigation</option>
+            <option>Wandering officer (rehired elsewhere)</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="description">What happened? <span class="req">*</span></label>
+          <textarea id="description" name="description" rows="7" required
+                    placeholder="Describe what you witnessed or know. Include dates, location, badge number, vehicle number, or any other identifying detail."></textarea>
+        </div>
+
+        <div class="field">
+          <label for="sources">Links to public sources</label>
+          <textarea id="sources" name="sources" rows="4"
+                    placeholder="One URL per line. News articles, court records, POST decertifications, official statements, etc."></textarea>
+          <p class="field-hint">Paste one URL per line. Strong sources strengthen the report.</p>
+        </div>
+
+        <div class="field">
+          <label for="your_name">Your name</label>
+          <input type="text" id="your_name" name="your_name" autocomplete="off" />
+          <p class="field-hint">Optional. You may submit anonymously.</p>
+        </div>
+
+        <div class="field">
+          <label for="your_email">Your email</label>
+          <input type="email" id="your_email" name="your_email" autocomplete="email" />
+          <p class="field-hint">Optional. Only used if we need to follow up. Per our privacy policy, we never share contact information.</p>
+        </div>
+
+        <div class="field field-checkbox">
+          <label class="checkbox-label">
+            <input type="checkbox" name="confirm_truth" required />
+            <span>I confirm that the information I am submitting is true to the best of my knowledge, and I understand that knowingly submitting false information may be unlawful.</span>
+          </label>
+        </div>
+
+        <div class="field field-checkbox">
+          <label class="checkbox-label">
+            <input type="checkbox" name="privacy_ack" required />
+            <span>I have read the <a href="about.html">privacy policy</a> and understand how my submission will be handled.</span>
+          </label>
+        </div>
+
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+        <input type="hidden" name="_subject" value="USA Cop Watch — new officer report" />
+
+        <button type="submit" class="btn-submit">Submit report</button>
+        <p class="form-note">
+          Thank you. Submissions are reviewed manually. You may not hear back
+          unless we need clarification.
+        </p>
+      </form>
+    </article>
+  </main>
+
+  <footer class="pagefooter">
+    <span>Every entry links to a primary source. Labels: confirmed / reported / disputed.</span>
+  </footer>
+</body>
+</html>
