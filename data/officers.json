@@ -258,5 +258,31 @@
     ],
     "officer_response": null,
     "last_updated": "2026-09-24"
+  },
+  {
+    "id": "danie-rippeon-01",
+    "name": "Daniel Rippeon",
+    "state_name": "Florida",
+    "county": "Volusia",
+    "county_fips": "12127",
+    "former_department": "Edgewater Police Department",
+    "current_department": null,
+    "separation_date": "2025-06-25",
+    "separation_type": "resigned",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "news",
+        "url": "https://www.news-journalonline.com/story/news/local/volusia/2025/10/16/former-edgewater-officer-broke-departments-respect-policy/86687943007/",
+        "label": "Daytona Beach News-Journal: Investigation says ex-Edgewater cop was disrespectful when he arrested off-duty CVS worker"
+      },
+      {
+        "type": "social",
+        "url": "https://web.facebook.com/EdgewaterPD/posts/updatedaniel-rippeon-has-been-separated-as-an-employee-of-the-edgewater-police-d/1028174432797454/?_rdc=1&_rdr#",
+        "label": "Daniel Rippeon has been separated as an employee of the Edgewater Police Department."
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-24"
   }
 ]
