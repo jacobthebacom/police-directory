@@ -639,6 +639,7 @@ a.brand {
   .searchbar--empty { display: none; }
   .about-article { max-width: 100%; }
 }
+
 /* ==================================================================
    REPORT FORM
    ================================================================== */
@@ -806,4 +807,25 @@ a.brand {
 
 .thanks-article h2 {
   margin-top: 1.75rem;
+}
+
+/* ==================================================================
+   FORM STATUS MESSAGE (report form)
+   ================================================================== */
+.form-status {
+  font-size: .85rem;
+  padding: .7rem .9rem;
+  border-radius: 6px;
+  margin-top: .25rem;
+  border-left: 3px solid transparent;
+}
+.form-status.success {
+  background: #12301f;
+  border-left-color: #2a8a55;
+  color: #c6f0d5;
+}
+.form-status.error {
+  background: #2e1213;
+  border-left-color: #a82323;
+  color: #f7c9c9;
 }
