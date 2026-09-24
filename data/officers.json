@@ -232,5 +232,31 @@
     ],
     "officer_response": null,
     "last_updated": "2026-09-24"
+  },
+  {
+    "id": "christian-morphis-01",
+    "name": "Christian Walker Morphis",
+    "state_name": "Indiana",
+    "county": "Marion County",
+    "county_fips": "18097",
+    "former_department": "Indiana State Police",
+    "current_department": null,
+    "separation_date": "2025-01-01",
+    "separation_type": "terminated",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "news",
+        "url": "https://www.yahoo.com/news/us/articles/corrupt-trooper-tries-frame-innocent-123000923.html",
+        "label": "Corrupt Trooper Tries to Frame Innocent Driver—Forgets His Own Camera Was Rolling"
+      },
+      {
+        "type": "social",
+        "url": "https://web.facebook.com/walker.morphis/",
+        "label": "Christian \"Walker\" Morphis | Facebook"
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-24"
   }
 ]
