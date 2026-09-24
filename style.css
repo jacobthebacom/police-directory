@@ -778,3 +778,32 @@ a.brand {
   .field-row { flex-direction: column; gap: 1.1rem; }
   .report-form { gap: 1rem; }
 }
+
+/* ==================================================================
+   THANK YOU PAGE
+   ================================================================== */
+.thanks-article {
+  text-align: left;
+}
+
+.thanks-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: #1f6f43;
+  color: #d4f5e1;
+  margin-bottom: 1.25rem;
+  border: 1px solid #2a8a55;
+}
+
+.thanks-article h1 {
+  font-size: 1.9rem;
+  margin: 0 0 1rem;
+}
+
+.thanks-article h2 {
+  margin-top: 1.75rem;
+}
