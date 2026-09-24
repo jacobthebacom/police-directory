@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>USA Cop Watch — Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <header class="admin-topbar">
+    <div class="admin-brand">
+      <span class="admin-mark">USA</span>
+      <span class="admin-title">USA Cop Watch — Admin</span>
+    </div>
+    <div class="admin-topbar-right">
+      <span id="save-state" class="save-state">Saved</span>
+      <button id="btn-new" class="btn btn-primary">+ New entry</button>
+    </div>
+  </header>
+
+  <main class="admin-main">
+    <!-- LIST VIEW -->
+    <section id="view-list" class="view">
+      <div class="list-toolbar">
+        <input id="list-search" type="text" placeholder="Search by name, department, county…" />
+        <span id="list-count" class="list-count"></span>
+      </div>
+
+      <div class="table-wrap">
+        <table class="entry-table">
+          <thead>
+            <tr>
+              <th data-sort="name">Name</th>
+              <th data-sort="state_name">State</th>
+              <th data-sort="county">County</th>
+              <th data-sort="former_department">Department</th>
+              <th data-sort="separation_date">Date</th>
+              <th data-sort="separation_type">Type</th>
+              <th data-sort="status">Status</th>
+              <th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="entry-tbody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- EDIT VIEW -->
+    <section id="view-edit" class="view" hidden>
+      <div class="edit-header">
+        <button id="btn-cancel" class="btn btn-ghost">← Back</button>
+        <h2 id="edit-title">Edit entry</h2>
+        <div class="edit-actions">
+          <button id="btn-delete" class="btn btn-danger" hidden>Delete</button>
+          <button id="btn-save" class="btn btn-primary">Save entry</button>
+        </div>
+      </div>
+
+      <form id="edit-form" class="edit-form" autocomplete="off">
+        <input type="hidden" name="_index" />
+
+        <div class="form-section">
+          <h3 class="form-section-title">Identity</h3>
+          <div class="grid-2">
+            <label class="field">
+              <span>Name <span class="req">*</span></span>
+              <input type="text" name="name" required />
+            </label>
+            <label class="field">
+              <span>ID <span class="req">*</span></span>
+              <input type="text" name="id" required placeholder="e.g. fulmer-eric-001" />
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Location</h3>
+          <div class="grid-3">
+            <label class="field">
+              <span>State <span class="req">*</span></span>
+              <input type="text" name="state_name" required placeholder="e.g. California" />
+            </label>
+            <label class="field">
+              <span>County <span class="req">*</span></span>
+              <input type="text" name="county" required placeholder="e.g. Stanislaus" />
+            </label>
+            <label class="field">
+              <span>County FIPS <span class="req">*</span></span>
+              <input type="text" name="county_fips" required pattern="\d{5}" placeholder="e.g. 06099" />
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Employment</h3>
+          <div class="grid-2">
+            <label class="field">
+              <span>Former department <span class="req">*</span></span>
+              <input type="text" name="former_department" required />
+            </label>
+            <label class="field">
+              <span>Current department</span>
+              <input type="text" name="current_department" placeholder="Leave blank if none known" />
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Separation</h3>
+          <div class="grid-3">
+            <label class="field">
+              <span>Date</span>
+              <input type="date" name="separation_date" />
+            </label>
+            <label class="field">
+              <span>Type <span class="req">*</span></span>
+              <select name="separation_type" required>
+                <option value="">— Select —</option>
+                <option>terminated</option>
+                <option>arrested</option>
+                <option>suspended</option>
+                <option>administrative leave</option>
+                <option>modified duty</option>
+                <option>resigned</option>
+                <option>retired</option>
+                <option>rehired</option>
+                <option>other</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Status <span class="req">*</span></span>
+              <select name="status" required>
+                <option value="">— Select —</option>
+                <option>confirmed</option>
+                <option>reported</option>
+                <option>disputed</option>
+              </select>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Sources</h3>
+          <div id="sources-list" class="sources-editor"></div>
+          <button type="button" id="btn-add-source" class="btn btn-ghost btn-small">+ Add source</button>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Officer response</h3>
+          <label class="field">
+            <span>Response (optional)</span>
+            <textarea name="officer_response" rows="4"
+                      placeholder="Leave blank if none provided"></textarea>
+          </label>
+        </div>
+
+        <div class="form-section">
+          <h3 class="form-section-title">Notes</h3>
+          <label class="field">
+            <span>Last updated</span>
+            <input type="date" name="last_updated" />
+          </label>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" hidden></div>
+
+  <script src="admin.js"></script>
+</body>
+</html>
