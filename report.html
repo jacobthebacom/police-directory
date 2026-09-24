@@ -43,13 +43,7 @@
         verified against public records will not be published.
       </p>
 
-      <!-- Replace YOUR_FORM_ID below with the Formspree endpoint from Step 1 -->
-      <form
-        id="report-form"
-        action="https://formspree.io/f/mljdnkrr"
-        method="POST"
-        class="report-form"
-      >
+      <form id="report-form" class="report-form" novalidate>
         <div class="field">
           <label for="officer_name">Officer name <span class="req">*</span></label>
           <input type="text" id="officer_name" name="officer_name" required autocomplete="off" />
@@ -126,9 +120,11 @@
         </div>
 
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
-        <input type="hidden" name="_subject" value="USA Cop Watch — new officer report" />
 
         <button type="submit" class="btn-submit">Submit report</button>
+
+        <div id="form-status" class="form-status" hidden></div>
+
         <p class="form-note">
           Thank you. Submissions are reviewed manually. You may not hear back
           unless we need clarification.
@@ -140,5 +136,72 @@
   <footer class="pagefooter">
     <span>Every entry links to a primary source. Labels: confirmed / reported / disputed.</span>
   </footer>
+
+  <script>
+    // ------------------------------------------------------------------
+    // Apps Script endpoint — replace with your deployed Web App /exec URL
+    // ------------------------------------------------------------------
+    const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxylEEPhWYhMbT0Oma9WCcu_ZhU-HTnNTUqqAaVGHg02Mv9fC8pL2aVkBgixwL9y6kJpQ/exec";
+
+    const form = document.getElementById("report-form");
+    const statusEl = document.getElementById("form-status");
+    const submitBtn = form.querySelector(".btn-submit");
+
+    function setStatus(kind, message) {
+      statusEl.hidden = false;
+      statusEl.className = "form-status " + kind;
+      statusEl.textContent = message;
+    }
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      // native validation still runs
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+      }
+
+      // honeypot — if filled, silently drop
+      const gotcha = form.querySelector('input[name="_gotcha"]');
+      if (gotcha && gotcha.value) {
+        window.location.href = "thanks.html";
+        return;
+      }
+
+      const data = {};
+      new FormData(form).forEach((v, k) => {
+        if (k === "_gotcha") return;
+        data[k] = v;
+      });
+      data.submitted_at = new Date().toISOString();
+      data.page_url = window.location.href;
+
+      submitBtn.disabled = true;
+      const originalLabel = submitBtn.textContent;
+      submitBtn.textContent = "Submitting…";
+      statusEl.hidden = true;
+
+      try {
+        // Apps Script Web Apps don't send CORS headers back, so we use
+        // text/plain to avoid a preflight and read nothing from the response.
+        await fetch(APPS_SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(data)
+        });
+
+        // With no-cors we can't read the response — assume success and redirect.
+        window.location.href = "thanks.html";
+      } catch (err) {
+        console.error("Submission failed:", err);
+        setStatus("error",
+          "Something went wrong sending your report. Please try again, or email USACopWatch@proton.me directly.");
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalLabel;
+      }
+    });
+  </script>
 </body>
 </html>
