@@ -206,5 +206,31 @@
     ],
     "officer_response": null,
     "last_updated": "2026-09-24"
+  },
+  {
+    "id": "carlos-bowdre-01",
+    "name": "Carlos Bowdre",
+    "state_name": "Colorado",
+    "county": "Jefferson County",
+    "county_fips": "08059",
+    "former_department": "Wheat Ridge Police Department",
+    "current_department": null,
+    "separation_date": "2025-08-27",
+    "separation_type": "terminated",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "news",
+        "url": "https://www.rcfp.org/blue-surveillance-police-bodycam-wheat-ridge-pd/",
+        "label": "Police bodycam footage in Colorado exposes ‘egregious’ misconduct"
+      },
+      {
+        "type": "social",
+        "url": "https://www.linkedin.com/in/carlos-m-bowdre/",
+        "label": "Carlos Bowdre | Linkedin"
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-24"
   }
 ]
