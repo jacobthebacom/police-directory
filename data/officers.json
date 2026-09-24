@@ -180,5 +180,31 @@
     ],
     "officer_response": null,
     "last_updated": "2026-09-24"
+  },
+  {
+    "id": "brian-schimmel-01",
+    "name": "Brian Schimmel",
+    "state_name": "Indiana",
+    "county": "Whitley County",
+    "county_fips": "18183",
+    "former_department": "South Whitley Police Department",
+    "current_department": "Hoosier Veterans Foundation (NGO)",
+    "separation_date": "2024-04-19",
+    "separation_type": "terminated",
+    "status": "confirmed",
+    "sources": [
+      {
+        "type": "news",
+        "url": "https://www.wane.com/top-stories/south-whitley-police-officer-let-go-due-to-public-safety/",
+        "label": "South Whitley police officer in viral video no longer on the force ‘due to public safety’"
+      },
+      {
+        "type": "social",
+        "url": "https://hoosierveteransfoundation.org/board",
+        "label": "Hoosier Veterans Foundation"
+      }
+    ],
+    "officer_response": null,
+    "last_updated": "2026-09-24"
   }
 ]
